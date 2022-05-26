@@ -1,0 +1,67 @@
+<!-- File hibernate.cfg.xml -->
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">
+com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="connection.url">
+jdbc:sqlserver://localhost:1433;databaseName=test</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password">123456</property>
+
+                <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create-drop</property>      
+
+    </session-factory>
+</hibernate-configuration>
+
+
+
+<!-- hibernate.properties -->
+hibernate.connection.driver_class=com.microsoft.sqlserver.jdbc.SQLServerDriver
+hibernate.connection.url=jdbc:sqlserver://localhost:1433;databaseName=test
+hibernate.connection.username=sa
+hibernate.connection.password=123456
+hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+hibernate.show_sql=true
+hibernate.format_sql=true
+hibernate.hbm2ddl.auto=update
+hibernate.current_session_context_class=thread
+
+
+<!-- persistence.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="JPA_Minhhoa">
+	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" 
+value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+            <property name="javax.persistence.jdbc.url"  
+value="jdbc:sqlserver://localhost:1433;databaseName=test" />
+            <property name="javax.persistence.jdbc.user" value="sa" />
+            <property name="javax.persistence.jdbc.password" value="123456" />
+<property name="hibernate.dialect" 
+value="org.hibernate.dialect.SQLServer2012Dialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        </properties>
+	
+	</persistence-unit>
+</persistence>
